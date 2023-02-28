@@ -2,38 +2,32 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import './index.css';
+const author = 'Ron DeSantis';
+const title = 'The Courage to Be Free';
+const img1 = './images/bookImg.jpg';
+const img2 = './images/85.jpg';
+const img3 = './images/71.jpg';
 
 const BookList = () => {
    return (
       <section className="booklist">
-         <Book />
-         <Book />
-         <Book />
-         <Book />
-         <Book />
+         <Book author={author} title={title} img={img1} />
+         <Book author={author} title={title} img={img2} />
+         <Book author={author} title={title} img={img3} />
       </section>
    );
 };
 
-const Book = () => {
+const Book = (props) => {
+   console.log(props);
    return (
       <article className="book">
-         <Image />
-         <Title />
-         <Author />
+         <img src={props.img} alt={props.title} />
+         <h2>${props.title}</h2>
+         <h4>{props.author}</h4>
       </article>
    );
 };
 
-const Image = () => (
-   <img
-      src="https://images-na.ssl-images-amazon.com/images/I/81QOUISS7VL._AC_UL600_SR600,400_.jpg"
-      alt="The Courage to Be Free"
-   />
-);
-const Title = () => <h2>The Courage to Be Free</h2>;
-const Author = () => {
-   return <h3>Ron DeSantis</h3>;
-};
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<BookList />);
